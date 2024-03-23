@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        h1 {
+            background-color: #000;
+            color: white;
+            font-size: 81px;
+            font-weight: 700;
+            text-align: center;
+            padding: 31px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .hy {
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+
+        }
+
+        .hj {
+            width: 416px;
+            height: 150px;
+            background: linear-gradient(45deg, gray, #ff0000d6, #ffff00d1, #00fffff0);
+            margin: 30px;
+            border-radius: 75px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .fd {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+        }
+
+        .jk {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gy {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hjk {
+            width: 80px;
+            height: 80px;
+            border-radius: 75px;
+            border: none;
+            margin: 20px;
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(45deg, rgb(101, 204, 252), rgb(38, 0, 255));
+        }
+
+        .hjk:hover {
+            color: #8a8282;
+            background: linear-gradient(45deg, rgb(252, 224, 101), rgb(255, 0, 221));
+        }
+
+        .hb {
+            display: none;
+        }
+
+        .dw {
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>
+          watch stop
+        </h1>
+    </div>
+    <div class="hy">
+        <div class="jk">
+            <div class="hj">
+                <div class="fd">
+                    <span class="dw min">00:</span>
+                    <span class="dw sec">00:</span>
+                    <span class="dw mil">00</span>
+                </div>
+            </div>
+        </div>
+        <div class="gy">
+            <button class="hjk str">Start</button>
+            <button class="hjk hb nh">Reset</button>
+            <!-- <button class="hjk"></button>-->
+        </div>
+    </div>
+    <script>
+        let ad = document.querySelector(".str")
+        let aff = document.querySelector(".nh")
+        let minn = document.querySelector(".min")
+        let secc = document.querySelector(".sec")
+        let mill = document.querySelector(".mil")
+        let res = document.querySelector(".hb")
+        let fals = false
+        let asa;
+        let asf = 0;
+        let asad;
+        let asaf = 0;
+        let saif;
+        let saf = 0;
+
+        let free = () => {
+            if (!fals) {
+                ad.innerHTML = 'Pause'
+                asa = setInterval(() => {
+                    if (asf === 100) {
+                        asf = 0;
+                    }
+                    mill.innerHTML = `${++asf} :`
+                }, 10);
+
+                asad = setInterval(() => {
+                    if (asaf === 60) {
+                        asaf = 0;
+                    }
+                    secc.innerHTML = `${++asaf} :`
+                }, 1000);
+
+                saif = setInterval(() => {
+                    if (saf === 59) {
+                        saf = 0;
+                    }
+                    minn.innerHTML = `${++saf} :`
+                }, 60000);
+                fals = true
+            } else {
+                ad.innerHTML = 'Play'
+                clearInterval(asa)
+                clearInterval(asad)
+                clearInterval(saif)
+
+                fals = false
+            }
+            asd()
+        }
+        let remove = () => {
+            aff.classList.add("hb")
+            clearInterval(asa)
+            clearInterval(asad)
+            clearInterval(saif)
+            secc.innerHTML = '00 :'
+            mill.innerHTML = '00';
+            minn.innerHTML = '00 :'
+            asf = 0;
+            asaf = 0;
+            saf = 0;
+            fals = true
+            ad.innerHTML = 'Play'
+            fals = false
+        }
+        let asd = () => {
+            aff.classList.remove("hb")
+        }
+        ad.addEventListener("click", free)
+        res.addEventListener("click", remove)
+    </script>
+</body>
+
+</html>
